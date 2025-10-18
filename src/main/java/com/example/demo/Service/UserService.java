@@ -6,7 +6,9 @@ import com.example.demo.Model.UserModel;
 import com.example.demo.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 
@@ -30,5 +32,10 @@ public class UserService {
        return user.map(userMapper::map).orElse(null);
     }
 
-
+    public List<UserDTO> getAllUsers(){
+        List <UserModel> users = userRepository.findAll();
+        return users.stream()
+                .map(userMapper::map)
+                .collect(Collectors.toList());
+    }
 }
