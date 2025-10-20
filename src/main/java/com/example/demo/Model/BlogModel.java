@@ -32,6 +32,7 @@ public class BlogModel {
     @JoinColumn(name = "author_id", nullable = false)
     private UserModel  author;
 
+
    private LocalDateTime  createAt = LocalDateTime.now();
    private LocalDateTime updateAt;
 
