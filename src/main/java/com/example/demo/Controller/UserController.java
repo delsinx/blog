@@ -19,13 +19,17 @@ public class UserController {
         UserDTO createUser = userService.signUP(userDTO);
         return ResponseEntity.ok("User created successfully: " + createUser);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/getuser/{id}")
     public UserDTO getUserById(@PathVariable Long id){
          return userService.getUserById(id);
     }
-    @GetMapping("/allusers")
+    @GetMapping("/getuser")
     public List<UserDTO> getAllUsers(){
          return userService.getAllUsers();
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteUserById(@PathVariable Long id){
+         return userService.deleteUserByID(id);
     }
 
 }
