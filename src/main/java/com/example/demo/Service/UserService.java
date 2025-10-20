@@ -47,4 +47,17 @@ public class UserService {
         }
         return null;
     }
+
+    public ResponseEntity<String> updateUserById(Long id, UserDTO userDTO){
+        Optional<UserModel> existingUser = userRepository.findById(id);
+        if(existingUser.isPresent()){
+            UserModel userToUpdate = existingUser.get();
+            userToUpdate.setName(userDTO.getName());
+            userToUpdate.setEmail(userDTO.getEmail());
+            userToUpdate.setPassword(userDTO.getPassword());
+            userRepository.save(userToUpdate);
+            return ResponseEntity.ok("User updated successfully");
+        }
+        return ResponseEntity.badRequest().body("User not found");
+    }
 }

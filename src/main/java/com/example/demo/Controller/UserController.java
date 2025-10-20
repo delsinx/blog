@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Service.UserService;
 import com.example.demo.User.DTO.UserDTO;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -30,6 +31,11 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteUserById(@PathVariable Long id){
          return userService.deleteUserByID(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity updateUserById(@PathVariable Long id, @RequestBody UserDTO userDTO){
+         return userService.updateUserById(id, userDTO);
     }
 
 }
