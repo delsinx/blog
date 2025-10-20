@@ -1,11 +1,10 @@
 package com.example.demo.Service;
 
-import com.example.demo.User.DTO.UserDTO;
 import com.example.demo.Mapper.UserMapper;
 import com.example.demo.Model.UserModel;
 import com.example.demo.Repository.UserRepository;
+import com.example.demo.User.DTO.UserDTO;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
