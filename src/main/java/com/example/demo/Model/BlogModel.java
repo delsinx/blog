@@ -28,9 +28,9 @@ public class BlogModel {
    @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-   @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
-    private User author;
+    private UserModel  author;
 
    private LocalDateTime  createAt = LocalDateTime.now();
    private LocalDateTime updateAt;

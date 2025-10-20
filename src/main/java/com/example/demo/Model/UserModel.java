@@ -15,6 +15,7 @@ public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @PrimaryKeyJoinColumn(name = "id")
+
     private Long id;
 
     @Column(nullable = false)
