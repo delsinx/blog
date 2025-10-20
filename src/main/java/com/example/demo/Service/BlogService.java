@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,5 +34,9 @@ public class BlogService {
         return blogs.stream()
                 .map(blogMapper::map)
                 .collect(Collectors.toList());
+    }
+    public BlogDTO getBlogById(Long id){
+        Optional<BlogModel> blog = blogRepository.findById(id);
+        return blog.map(blogMapper::map).orElse(null);
     }
 }
