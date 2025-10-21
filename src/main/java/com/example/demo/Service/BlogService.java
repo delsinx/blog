@@ -41,4 +41,11 @@ public class BlogService {
         Optional<BlogModel> blog = blogRepository.findById(id);
         return blog.map(blogMapper::map).orElse(null);
     }
+
+    public List<BlogDTO> getBlogsByAuthorId(Long authorId){
+        List<BlogModel> blogs = blogRepository.findByAuthorId(authorId);
+        return blogs.stream()
+                .map(blogMapper::map)
+                .collect(Collectors.toList());
+    }
 }
