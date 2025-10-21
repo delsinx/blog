@@ -48,4 +48,6 @@ public class BlogService {
                 .map(blogMapper::map)
                 .collect(Collectors.toList());
     }
+    public void deleteBlog(Long id){blogRepository.deleteById(id);
+    }
 }
