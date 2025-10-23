@@ -8,32 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
      public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @PostMapping("/signup")
+    @PostMapping()
     public ResponseEntity signUp(@RequestBody UserDTO userDTO){
         UserDTO createUser = userService.signUP(userDTO);
-        return ResponseEntity.ok("User created successfully: " + createUser);
+        return ResponseEntity.status(201).body(createUser);
     }
-    @GetMapping("/getuser/{id}")
+    @GetMapping("/{id}")
     public UserDTO getUserById(@PathVariable Long id){
          return userService.getUserById(id);
     }
-    @GetMapping("/getuser")
+    @GetMapping()
     public List<UserDTO> getAllUsers(){
          return userService.getAllUsers();
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteUserById(@PathVariable Long id){
-         return userService.deleteUserByID(id);
+         userService.deleteUserByID(id);
+         return ResponseEntity.status(204).body(null);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity updateUserById(@PathVariable Long id, @RequestBody UserDTO userDTO){
          return userService.updateUserById(id, userDTO);
     }
