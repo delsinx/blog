@@ -36,12 +36,12 @@ public class BlogController {
         return blogService.getBlogById(id);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/author/{id}")
     public List<BlogDTO> getBlogsByAuthorId(@PathVariable Long id){
         return blogService.getBlogsByAuthorId(id);
     }
 
-    @DeleteMapping("/deletepost/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteBlog(@PathVariable Long id){
         blogService.deleteBlog(id);
         return ResponseEntity.status(204).body(null);
