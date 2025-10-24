@@ -2,6 +2,7 @@ package com.example.demo.Model;
 
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.User.DTO.UserDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +31,7 @@ public class BlogModel {
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
+    @JsonBackReference
     private UserModel  author;
 
 

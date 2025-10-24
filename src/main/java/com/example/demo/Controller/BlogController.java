@@ -18,23 +18,25 @@ public class BlogController {
         this.blogService = blogService;
     }
 
-    @PostMapping("/create")
+    @PostMapping()
     public ResponseEntity createBlog(@RequestBody BlogDTO blogDTO) {
         BlogDTO createBlog = blogService.createBlog(blogDTO);
-        return ResponseEntity.ok().body("Blog created successfully");
+        return ResponseEntity.status(201).body(createBlog);
     }
 
-    @GetMapping("/getblogs")
+    @GetMapping()
     public List<BlogDTO> getAllBlogs(){
-        return blogService.getAllBlog();
+
+        return ResponseEntity.status(200).body(blogService.getAllBlog()).getBody();
     }
 
-    @GetMapping("/getblogs/{id}")
+    @GetMapping("/{id}")
     public BlogDTO getBlogById(@PathVariable Long id){
+
         return blogService.getBlogById(id);
     }
 
-    @GetMapping("/getblogsauthor/{id}")
+    @GetMapping("/{id}")
     public List<BlogDTO> getBlogsByAuthorId(@PathVariable Long id){
         return blogService.getBlogsByAuthorId(id);
     }
@@ -42,7 +44,7 @@ public class BlogController {
     @DeleteMapping("/deletepost/{id}")
     public ResponseEntity deleteBlog(@PathVariable Long id){
         blogService.deleteBlog(id);
-        return ResponseEntity.ok().body("Post deletado com sucesso");
+        return ResponseEntity.status(204).body(null);
     }
 
 }
