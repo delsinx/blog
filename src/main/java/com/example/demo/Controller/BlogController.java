@@ -2,7 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Service.BlogService;
 import com.example.demo.User.DTO.BlogDTO;
-import com.example.demo.User.DTO.UserDTO;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

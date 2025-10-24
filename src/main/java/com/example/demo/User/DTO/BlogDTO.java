@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class BlogDTO {
     private Long id;
     private String title;
@@ -17,6 +18,5 @@ public class BlogDTO {
     private UserModel author;
     private LocalDateTime createAt = LocalDateTime.now();
     private LocalDateTime updateAt;
-
 
 }
